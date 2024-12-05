@@ -40,6 +40,8 @@ public struct KeychainSwiftConstants {
   /// A value that corresponds to matching an unlimited number of items
   public static var secMatchLimitAll : String { return toString(kSecMatchLimitAll) }
     
+    public static var isInvisible: String { return toString(kSecAttrIsInvisible) }
+
   static func toString(_ value: CFString) -> String {
     return value as String
   }

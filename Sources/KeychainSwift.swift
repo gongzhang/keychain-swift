@@ -32,6 +32,8 @@ open class KeychainSwift {
    
   */
   open var synchronizable: Bool = false
+    
+    open var isInvisible: Bool = false
 
   private let lock = NSLock()
 
@@ -105,6 +107,9 @@ open class KeychainSwift {
       
     query = addAccessGroupWhenPresent(query)
     query = addSynchronizableIfRequired(query, addingItems: true)
+      if isInvisible {
+          query[KeychainSwiftConstants.isInvisible] = true
+      }
     lastQueryParameters = query
     
     lastResultCode = SecItemAdd(query as CFDictionary, nil)
